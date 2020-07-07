@@ -1,8 +1,8 @@
 //
-//  PhotoMapViewController.h
+//  PhotosViewController.h
 //  Instagram
 //
-//  Created by Jasdeep Gill on 7/6/20.
+//  Created by Jasdeep Gill on 7/7/20.
 //  Copyright © 2020 jazgill. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeFeedViewController : UIViewController
+@interface PhotosViewController : UIViewController
 
 @end
 

@@ -86,7 +86,7 @@
             NSLog(@"User logged in successfully");
             
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UINavigationController *photoNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"PhotoNavigationViewController"];
+            UINavigationController *photoNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"MainTabBarController"];
             SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
             
             [sceneDelegate changeRootViewController:photoNavigationController :YES];

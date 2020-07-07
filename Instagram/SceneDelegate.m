@@ -27,7 +27,7 @@
     
     if (user != nil) {
         NSLog(@"Welcome back %@ 😀", user.username);
-        UIViewController *photosNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"PhotoNavigationViewController"];
+        UIViewController *photosNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"MainTabBarController"];
         self.window.rootViewController = photosNavigationController;
     }
     

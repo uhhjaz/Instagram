@@ -6,22 +6,25 @@
 //  Copyright © 2020 jazgill. All rights reserved.
 //
 
-#import "PhotoMapViewController.h"
+#import "HomeFeedViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
 #import "SceneDelegate.h"
 
-@interface PhotoMapViewController ()
+@interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource> 
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
-@implementation PhotoMapViewController
+@implementation HomeFeedViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
 }
+
 
 - (IBAction)didTapLogout:(id)sender {
     
@@ -38,19 +41,7 @@
 
 
 
-/*
-    NSLog(@"User logging out %@", PFUser.currentUser);
-    SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    sceneDelegate.window.rootViewController = loginViewController;
-    NSLog(@"User logging out %@", PFUser.currentUser);
-    
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        // PFUser.current() will now be nil
-        NSLog(@"User logging out %@", PFUser.currentUser);
-    }];
-*/
+
 
 /*
 #pragma mark - Navigation

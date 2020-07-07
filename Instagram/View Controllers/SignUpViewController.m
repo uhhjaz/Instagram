@@ -97,9 +97,14 @@
             
         } else {
             NSLog(@"User registered successfully");
-            [self performSegueWithIdentifier:@"signupSegue" sender:nil];
+            //[self performSegueWithIdentifier:@"signupSegue" sender:nil];
             
-            // manually segue to logged in view
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UINavigationController *photoNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"MainTabBarController"];
+            SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+            
+            [sceneDelegate changeRootViewController:photoNavigationController :YES];
+            //[self performSegueWithIdentifier:@"loginSegue" sender:nil];
         }
     }];
 }

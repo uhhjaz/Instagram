@@ -1,5 +1,5 @@
 //
-//  PhotoMapViewController.h
+//  ProfileViewController.h
 //  Instagram
 //
 //  Created by Jasdeep Gill on 7/6/20.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HomeFeedViewController : UIViewController
+@interface ProfileViewController : UIViewController
 
 @end
 

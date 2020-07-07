@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		3A06E9CC24B3CFC1003B758E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06E9CB24B3CFC1003B758E /* LoginViewController.m */; };
 		3A06E9CF24B3CFD5003B758E /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06E9CE24B3CFD5003B758E /* SignUpViewController.m */; };
-		3A06E9D224B437FD003B758E /* PhotoMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06E9D124B437FD003B758E /* PhotoMapViewController.m */; };
+		3A06E9D224B437FD003B758E /* HomeFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06E9D124B437FD003B758E /* HomeFeedViewController.m */; };
+		3A06E9D824B4456B003B758E /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06E9D724B4456B003B758E /* ProfileViewController.m */; };
+		3A06E9DB24B4FF0A003B758E /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06E9DA24B4FF0A003B758E /* PhotosViewController.m */; };
 		3AF6674D24B3B667008012CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF6674C24B3B667008012CE /* AppDelegate.m */; };
 		3AF6675024B3B667008012CE /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF6674F24B3B667008012CE /* SceneDelegate.m */; };
 		3AF6675624B3B667008012CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF6675424B3B667008012CE /* Main.storyboard */; };
@@ -46,8 +48,12 @@
 		3A06E9CB24B3CFC1003B758E /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		3A06E9CD24B3CFD5003B758E /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		3A06E9CE24B3CFD5003B758E /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
-		3A06E9D024B437FD003B758E /* PhotoMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoMapViewController.h; sourceTree = "<group>"; };
-		3A06E9D124B437FD003B758E /* PhotoMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoMapViewController.m; sourceTree = "<group>"; };
+		3A06E9D024B437FD003B758E /* HomeFeedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeFeedViewController.h; sourceTree = "<group>"; };
+		3A06E9D124B437FD003B758E /* HomeFeedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeFeedViewController.m; sourceTree = "<group>"; };
+		3A06E9D624B4456B003B758E /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		3A06E9D724B4456B003B758E /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		3A06E9D924B4FF0A003B758E /* PhotosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotosViewController.h; sourceTree = "<group>"; };
+		3A06E9DA24B4FF0A003B758E /* PhotosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotosViewController.m; sourceTree = "<group>"; };
 		3AF6674824B3B667008012CE /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF6674B24B3B667008012CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3AF6674C24B3B667008012CE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -136,8 +142,12 @@
 				3A06E9CB24B3CFC1003B758E /* LoginViewController.m */,
 				3A06E9CD24B3CFD5003B758E /* SignUpViewController.h */,
 				3A06E9CE24B3CFD5003B758E /* SignUpViewController.m */,
-				3A06E9D024B437FD003B758E /* PhotoMapViewController.h */,
-				3A06E9D124B437FD003B758E /* PhotoMapViewController.m */,
+				3A06E9D024B437FD003B758E /* HomeFeedViewController.h */,
+				3A06E9D124B437FD003B758E /* HomeFeedViewController.m */,
+				3A06E9D624B4456B003B758E /* ProfileViewController.h */,
+				3A06E9D724B4456B003B758E /* ProfileViewController.m */,
+				3A06E9D924B4FF0A003B758E /* PhotosViewController.h */,
+				3A06E9DA24B4FF0A003B758E /* PhotosViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -457,10 +467,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A06E9D224B437FD003B758E /* PhotoMapViewController.m in Sources */,
+				3A06E9D224B437FD003B758E /* HomeFeedViewController.m in Sources */,
 				3A06E9CC24B3CFC1003B758E /* LoginViewController.m in Sources */,
 				3A06E9CF24B3CFD5003B758E /* SignUpViewController.m in Sources */,
 				3AF6674D24B3B667008012CE /* AppDelegate.m in Sources */,
+				3A06E9D824B4456B003B758E /* ProfileViewController.m in Sources */,
+				3A06E9DB24B4FF0A003B758E /* PhotosViewController.m in Sources */,
 				3AF6675E24B3B668008012CE /* main.m in Sources */,
 				3AF6675024B3B667008012CE /* SceneDelegate.m in Sources */,
 			);
