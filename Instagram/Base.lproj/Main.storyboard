@@ -16,13 +16,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9gT-cT-eQa">
-                                <rect key="frame" x="20" y="318" width="374" height="34"/>
+                                <rect key="frame" x="20" y="316" width="374" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Lu-9x-qC8">
-                                <rect key="frame" x="20" y="360" width="374" height="34"/>
+                                <rect key="frame" x="20" y="358" width="374" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -51,7 +51,6 @@
                                 <state key="normal" title="New to Instagram? Sign up here!"/>
                                 <connections>
                                     <action selector="didTapGoToSignUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qQq-Jh-MDq"/>
-                                    <segue destination="ncc-EH-Qhf" kind="show" id="fgG-Yf-Vyv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -67,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-100" y="820"/>
+            <point key="canvasLocation" x="93" y="92"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="T5A-1b-zEM">
@@ -78,19 +77,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kvw-Vn-8mP">
-                                <rect key="frame" x="20" y="327" width="374" height="34"/>
+                                <rect key="frame" x="20" y="316" width="374" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H8F-Gq-UVZ">
-                                <rect key="frame" x="20" y="369" width="374" height="34"/>
+                                <rect key="frame" x="20" y="358" width="374" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHK-IH-YQj">
-                                <rect key="frame" x="20" y="423" width="374" height="30"/>
+                                <rect key="frame" x="20" y="414" width="374" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Sign up">
@@ -100,22 +99,21 @@
                                     <action selector="didTapSignUp:" destination="ncc-EH-Qhf" eventType="touchUpInside" id="tXE-NR-Qwd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHq-HY-GbK">
+                                <rect key="frame" x="20" y="452" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Already have an account? Login here!"/>
+                                <connections>
+                                    <action selector="didTapGoToLogin:" destination="ncc-EH-Qhf" eventType="touchUpInside" id="jeD-He-Zaw"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrI-Fg-wkL">
-                                <rect key="frame" x="105" y="245" width="204" height="59"/>
+                                <rect key="frame" x="126" y="164" width="162" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="45"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHq-HY-GbK">
-                                <rect key="frame" x="20" y="461" width="374" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Already have an account? Login here!"/>
-                                <connections>
-                                    <action selector="didTapGoToLogin:" destination="ncc-EH-Qhf" eventType="touchUpInside" id="jeD-He-Zaw"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="xML-m7-vFO"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Miq-hp-FMK"/>
@@ -129,14 +127,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N2d-zm-0Na" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="999" y="93"/>
+            <point key="canvasLocation" x="696" y="92"/>
         </scene>
         <!--Photo Map View Controller-->
         <scene sceneID="bbm-fG-Oma">
             <objects>
                 <viewController id="RPr-2l-LOp" customClass="PhotoMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EZD-Xi-IjN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="hnP-2I-5wI"/>
@@ -159,7 +157,7 @@
                 <navigationController storyboardIdentifier="PhotoNavigationViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d4r-Nn-Uey" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="d2L-id-MTH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -173,6 +171,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hgb-qQ-Qyg"/>
+        <segue reference="S9c-7S-WkI"/>
     </inferredMetricsTieBreakers>
 </document>

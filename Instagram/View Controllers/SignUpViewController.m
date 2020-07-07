@@ -8,6 +8,7 @@
 
 #import "SignUpViewController.h"
 #import <Parse/Parse.h>
+#import "SceneDelegate.h"
 
 @interface SignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
@@ -29,6 +30,11 @@
 
 
 - (IBAction)didTapGoToLogin:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+    
+    [sceneDelegate changeRootViewController:loginViewController :YES];
 }
 
 

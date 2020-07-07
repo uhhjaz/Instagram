@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
+#import "SceneDelegate.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
@@ -84,13 +85,23 @@
         } else {
             NSLog(@"User logged in successfully");
             
-            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UINavigationController *photoNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"PhotoNavigationViewController"];
+            SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
+            
+            [sceneDelegate changeRootViewController:photoNavigationController :YES];
+            //[self performSegueWithIdentifier:@"loginSegue" sender:nil];
+            
         }
     }];
 }
 
 - (IBAction)didTapGoToSignUp:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *signupViewController = [storyboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
+    SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
     
+    [sceneDelegate changeRootViewController:signupViewController :YES];
 }
 
 
