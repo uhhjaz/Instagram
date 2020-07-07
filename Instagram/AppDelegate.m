@@ -23,7 +23,9 @@
       configuration.server = @"https://jaz-instagram.herokuapp.com/parse";
     }];
     
+    
     [Parse initializeWithConfiguration:configuration];
+    /*
     PFObject *gameScore = [PFObject objectWithClassName:@"GameScore"];
     gameScore[@"score"] = @133453;
     gameScore[@"playerName"] = @"Jaz Gill";
@@ -35,6 +37,7 @@
          NSLog(@"Error: %@", error.description);
       }
     }];
+    */
     
     return YES;
 }
