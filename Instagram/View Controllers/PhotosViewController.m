@@ -7,6 +7,7 @@
 //
 
 #import "PhotosViewController.h"
+#import "Post.h"
 
 @interface PhotosViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imagePostView;
@@ -36,27 +37,46 @@
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     
-    
     [self presentViewController:imagePickerVC animated:YES completion:nil];
-    
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     NSLog(@"in image picker");
     // Get the image captured by the UIImagePickerController
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    //UIImage *editedImage = info[UIImagePickerControllerEditedImage];
 
     // Do something with the images (based on your use case)
-    
-    self.imagePostView.image = originalImage;
+    self.imagePostView.image = [self resizeImage:originalImage withSize:CGSizeMake(100, 100)];
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
 - (IBAction)didTapPost:(id)sender {
+    [Post postUserImage:self.imagePostView.image withCaption:[self.captionField text] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        if(succeeded){
+            NSLog(@"posting image success");
+        }
+        else{
+            NSLog(@"Error posting image: %@", error.localizedDescription);
+        }
+    }];
+}
+
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 
 /*
