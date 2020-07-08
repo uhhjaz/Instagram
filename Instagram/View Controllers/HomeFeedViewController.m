@@ -11,17 +11,31 @@
 #import "LoginViewController.h"
 #import <Parse/Parse.h>
 #import "SceneDelegate.h"
+#import "PhotoCell.h"
+#import "Post.h"
 
 @interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource> 
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *feedPosts;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
 @implementation HomeFeedViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    [self getFeed];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(getFeed) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    //[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
 
 }
 
@@ -39,9 +53,44 @@
     }];
 }
 
+- (void) getFeed{
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    [query orderByDescending:@"createdAt"];
+    query.limit = 20;
+
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
+        if (posts != nil) {
+            NSLog(@"Successfully got posts");
+            self.feedPosts = posts;
+            [self.tableView reloadData];
+            
+        } else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+        [self.refreshControl endRefreshing];
+    }];
+}
 
 
 
+// shows how many rows we have
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.feedPosts.count;
+}
+
+
+// creates and configures a cell
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    // creates cell from photo
+    PhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell"];
+    cell.postIg = self.feedPosts[indexPath.row];
+    [cell setPostValues];
+    
+    return cell;
+}
 
 /*
 #pragma mark - Navigation

@@ -18,6 +18,7 @@
 
 @implementation SignUpViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -36,7 +37,6 @@
     
     [sceneDelegate changeRootViewController:loginViewController :YES];
 }
-
 
 
 - (void)registerUser {

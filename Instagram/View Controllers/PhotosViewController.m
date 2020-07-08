@@ -10,12 +10,13 @@
 #import "Post.h"
 
 @interface PhotosViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-@property (weak, nonatomic) IBOutlet UIImageView *imagePostView;
-@property (weak, nonatomic) IBOutlet UITextField *captionField;
+@property (strong, nonatomic) IBOutlet UIImageView *imagePostView;
+@property (strong, nonatomic) IBOutlet UITextField *captionField;
 
 @end
 
 @implementation PhotosViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,7 +25,7 @@
 
 
 - (IBAction)didTapImage:(id)sender {
-    NSLog(@"TAPPED IMAGE");
+
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
@@ -40,14 +41,15 @@
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
 
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    NSLog(@"in image picker");
+
     // Get the image captured by the UIImagePickerController
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
     //UIImage *editedImage = info[UIImagePickerControllerEditedImage];
 
     // Do something with the images (based on your use case)
-    self.imagePostView.image = [self resizeImage:originalImage withSize:CGSizeMake(100, 100)];
+    self.imagePostView.image = [self resizeImage:originalImage withSize:CGSizeMake(200, 100)];
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -65,6 +67,7 @@
     }];
 }
 
+
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
     UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     
@@ -78,6 +81,7 @@
     
     return newImage;
 }
+
 
 /*
 #pragma mark - Navigation

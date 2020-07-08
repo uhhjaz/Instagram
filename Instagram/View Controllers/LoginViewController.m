@@ -18,6 +18,7 @@
 
 @implementation LoginViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -27,6 +28,7 @@
 - (IBAction)didTapLogin:(id)sender {
     [self loginUser];
 }
+
 
 - (void)loginUser {
     NSString *username = self.usernameField.text;
@@ -96,6 +98,7 @@
     }];
 }
 
+
 - (IBAction)didTapGoToSignUp:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UINavigationController *signupViewController = [storyboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
@@ -103,7 +106,6 @@
     
     [sceneDelegate changeRootViewController:signupViewController :YES];
 }
-
 
 
 /*
