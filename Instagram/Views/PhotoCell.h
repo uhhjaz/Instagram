@@ -11,12 +11,12 @@
 #import "Post.h"
 
 NS_ASSUME_NONNULL_BEGIN
-@import Parse;
 
 @interface PhotoCell : UITableViewCell
 @property (strong, nonatomic) Post *postIg;
 @property (weak, nonatomic) IBOutlet PFImageView *imagePostView;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
+
 
 - (void)setPostValues;
 

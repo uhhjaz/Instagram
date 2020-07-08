@@ -9,6 +9,7 @@
 #import "HomeFeedViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "PostDetailViewController.h"
 #import <Parse/Parse.h>
 #import "SceneDelegate.h"
 #import "PhotoCell.h"
@@ -58,6 +59,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
     query.limit = 20;
+    [query includeKey:@"author"];
 
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
@@ -92,14 +94,20 @@
     return cell;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    UITableViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+    Post *gramPost = self.feedPosts[indexPath.row];
+    
+    // sends movie array to next controller
+    PostDetailViewController *postDetailViewController = [segue destinationViewController];
+    postDetailViewController.postIg = gramPost;
+    
 }
-*/
+
 
 @end
