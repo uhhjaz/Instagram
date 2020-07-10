@@ -27,7 +27,7 @@
     
     Post *newPost = [Post new];
     newPost.image = [self getPFFileFromImage:image];
-    newPost.author = [IGUser user];
+    newPost.author = [IGUser currentUser];
     newPost.caption = caption;
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);
