@@ -9,10 +9,12 @@
 #import "SignUpViewController.h"
 #import <Parse/Parse.h>
 #import "SceneDelegate.h"
+#import "IGUser.h"
 
 @interface SignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
 
 @end
 
@@ -41,12 +43,14 @@
 
 - (void)registerUser {
     // initialize a user object
-    PFUser *newUser = [PFUser user];
+    IGUser *newUser = [IGUser user];
     
     // set user properties
     newUser.username = self.usernameField.text;
     //newUser.email = self.emailField.text;
     newUser.password = self.passwordField.text;
+    //newUser
+    newUser.name = self.nameField.text;
     
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {

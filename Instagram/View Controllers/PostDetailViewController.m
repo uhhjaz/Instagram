@@ -7,6 +7,7 @@
 //
 
 #import "PostDetailViewController.h"
+#import "IGUser.h"
 
 @interface PostDetailViewController ()
 @property (weak, nonatomic) IBOutlet PFImageView *postImageView;
@@ -26,7 +27,7 @@
     
     self.captionLabel.text = self.postIg[@"caption"];
     
-    PFUser *user = self.postIg[@"author"];
+    IGUser *user = self.postIg[@"author"];
     self.usernameLabel.text = user.username;
     
     NSNumber *numLikes = self.postIg[@"likeCount"];
@@ -38,9 +39,9 @@
     [dateFormat setDateFormat:@"MMMM dd YYYY"];
     NSString* dateInWords = [dateFormat stringFromDate:date];
     self.dateLabel.text = dateInWords;
-    
     self.postImageView.file = self.postIg[@"image"];
     [self.postImageView loadInBackground];
+    //self.imagePostView.layer.cornerRadius = self.imagePostView.frame.size.height / 2;
     
 }
 

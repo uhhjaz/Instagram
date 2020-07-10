@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 @import Parse;
 #import "Post.h"
+#import "IGUser.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) Post *postIg;
 @property (weak, nonatomic) IBOutlet PFImageView *imagePostView;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet PFImageView *profilePictureView;
 
 
 - (void)setPostValues;

@@ -7,6 +7,7 @@
 //
 
 #import <Parse/Parse.h>
+#import "IGUser.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -15,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *postID;
 @property (nonatomic, strong) NSString *userID;
-@property (nonatomic, strong) PFUser *author;
+@property (nonatomic, strong) IGUser *author;
 @property (nonatomic, strong) NSString *postedDate;
 
 @property (nonatomic, strong) NSString *caption;

@@ -15,6 +15,8 @@
 		3A06E9DE24B511A8003B758E /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06E9DD24B511A8003B758E /* Post.m */; };
 		3A06E9E424B519FE003B758E /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A06E9E324B519FE003B758E /* PhotoCell.m */; };
 		3A8481C224B6547B00A90672 /* PostDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8481C124B6547B00A90672 /* PostDetailViewController.m */; };
+		3ABB6AF524B67E92005B5066 /* PhotoGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB6AF424B67E92005B5066 /* PhotoGridCell.m */; };
+		3ABB6AF824B80A2D005B5066 /* IGUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ABB6AF724B80A2D005B5066 /* IGUser.m */; };
 		3AF6674D24B3B667008012CE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF6674C24B3B667008012CE /* AppDelegate.m */; };
 		3AF6675024B3B667008012CE /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF6674F24B3B667008012CE /* SceneDelegate.m */; };
 		3AF6675624B3B667008012CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF6675424B3B667008012CE /* Main.storyboard */; };
@@ -63,6 +65,10 @@
 		3A06E9E324B519FE003B758E /* PhotoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		3A8481C024B6547B00A90672 /* PostDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostDetailViewController.h; sourceTree = "<group>"; };
 		3A8481C124B6547B00A90672 /* PostDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostDetailViewController.m; sourceTree = "<group>"; };
+		3ABB6AF324B67E92005B5066 /* PhotoGridCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PhotoGridCell.h; sourceTree = "<group>"; };
+		3ABB6AF424B67E92005B5066 /* PhotoGridCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoGridCell.m; sourceTree = "<group>"; };
+		3ABB6AF624B80A2D005B5066 /* IGUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IGUser.h; sourceTree = "<group>"; };
+		3ABB6AF724B80A2D005B5066 /* IGUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IGUser.m; sourceTree = "<group>"; };
 		3AF6674824B3B667008012CE /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF6674B24B3B667008012CE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3AF6674C24B3B667008012CE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -135,6 +141,8 @@
 			children = (
 				3A06E9DC24B511A7003B758E /* Post.h */,
 				3A06E9DD24B511A8003B758E /* Post.m */,
+				3ABB6AF624B80A2D005B5066 /* IGUser.h */,
+				3ABB6AF724B80A2D005B5066 /* IGUser.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -144,6 +152,8 @@
 			children = (
 				3A06E9E224B519FE003B758E /* PhotoCell.h */,
 				3A06E9E324B519FE003B758E /* PhotoCell.m */,
+				3ABB6AF324B67E92005B5066 /* PhotoGridCell.h */,
+				3ABB6AF424B67E92005B5066 /* PhotoGridCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -484,8 +494,10 @@
 			files = (
 				3A06E9D224B437FD003B758E /* HomeFeedViewController.m in Sources */,
 				3A06E9CC24B3CFC1003B758E /* LoginViewController.m in Sources */,
+				3ABB6AF524B67E92005B5066 /* PhotoGridCell.m in Sources */,
 				3A06E9CF24B3CFD5003B758E /* SignUpViewController.m in Sources */,
 				3AF6674D24B3B667008012CE /* AppDelegate.m in Sources */,
+				3ABB6AF824B80A2D005B5066 /* IGUser.m in Sources */,
 				3A06E9DE24B511A8003B758E /* Post.m in Sources */,
 				3A06E9D824B4456B003B758E /* ProfileViewController.m in Sources */,
 				3A8481C224B6547B00A90672 /* PostDetailViewController.m in Sources */,

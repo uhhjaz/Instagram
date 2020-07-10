@@ -14,6 +14,7 @@
 #import "SceneDelegate.h"
 #import "PhotoCell.h"
 #import "Post.h"
+#import "IGUser.h"
 
 @interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource> 
 
@@ -21,10 +22,15 @@
 @property (strong, nonatomic) NSArray *feedPosts;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
+
 @end
 
 @implementation HomeFeedViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [self.tableView reloadData];
+    [self getFeed];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,7 +42,6 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getFeed) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
-    //[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(onTimer) userInfo:nil repeats:true];
 
 }
 
@@ -48,7 +53,7 @@
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     sceneDelegate.window.rootViewController = loginViewController;
     
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+    [IGUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
         // PFUser.current() will now be nil
         NSLog(@"User logged out suggessfully");
     }];

@@ -7,6 +7,8 @@
 //
 
 #import "PhotosViewController.h"
+#import "HomeFeedViewController.h"
+#import "SceneDelegate.h"
 #import "Post.h"
 
 @interface PhotosViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -60,11 +62,16 @@
     [Post postUserImage:self.imagePostView.image withCaption:[self.captionField text] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded){
             NSLog(@"posting image success");
+            self.imagePostView.image = [UIImage imageNamed: @"image_placeholder.png"];
+            self.captionField.text = @"";
         }
         else{
             NSLog(@"Error posting image: %@", error.localizedDescription);
         }
     }];
+    
+    [self.tabBarController setSelectedIndex:0];
+    
 }
 
 
