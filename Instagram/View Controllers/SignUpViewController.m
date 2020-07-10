@@ -6,10 +6,15 @@
 //  Copyright © 2020 jazgill. All rights reserved.
 //
 
-#import "SignUpViewController.h"
-#import <Parse/Parse.h>
 #import "SceneDelegate.h"
+#import <Parse/Parse.h>
+
+// MARK: Models
 #import "IGUser.h"
+
+// MARK: Controllers
+#import "SignUpViewController.h"
+
 
 @interface SignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
@@ -42,14 +47,13 @@
 
 
 - (void)registerUser {
+    
     // initialize a user object
     IGUser *newUser = [IGUser user];
     
-    // set user properties
+    // set user fields
     newUser.username = self.usernameField.text;
-    //newUser.email = self.emailField.text;
     newUser.password = self.passwordField.text;
-    //newUser
     newUser.name = self.nameField.text;
 
     
@@ -103,17 +107,17 @@
         } else {
             NSLog(@"User registered successfully");
             
+            // set user profile image to default
             [IGUser updateUserProfileImage:[UIImage imageNamed: @"profile_image_default.png"] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             }];
             
-            //[self performSegueWithIdentifier:@"signupSegue" sender:nil];
             
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             UINavigationController *photoNavigationController = [storyboard instantiateViewControllerWithIdentifier:@"MainTabBarController"];
             SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
             
             [sceneDelegate changeRootViewController:photoNavigationController :YES];
-            //[self performSegueWithIdentifier:@"loginSegue" sender:nil];
+
         }
     }];
 }

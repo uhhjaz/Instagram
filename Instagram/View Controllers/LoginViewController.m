@@ -6,10 +6,15 @@
 //  Copyright © 2020 jazgill. All rights reserved.
 //
 
-#import "LoginViewController.h"
-#import <Parse/Parse.h>
 #import "SceneDelegate.h"
+#import <Parse/Parse.h>
+
+// MARK: Models
 #import "IGUser.h"
+
+// MARK: Controller
+#import "LoginViewController.h"
+
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
@@ -81,11 +86,8 @@
             [self presentViewController:alert animated:YES completion:^{
                 // optional code for what happens after the alert controller has finished presenting
             }];
-            
-            
-            
-            
-        } else {
+        }
+        else {
             NSLog(@"User logged in successfully");
             
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -93,7 +95,6 @@
             SceneDelegate *sceneDelegate = (SceneDelegate *)self.view.window.windowScene.delegate;
             
             [sceneDelegate changeRootViewController:photoNavigationController :YES];
-            //[self performSegueWithIdentifier:@"loginSegue" sender:nil];
             
         }
     }];

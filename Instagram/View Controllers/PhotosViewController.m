@@ -6,10 +6,15 @@
 //  Copyright © 2020 jazgill. All rights reserved.
 //
 
+#import "SceneDelegate.h"
+
+// MARK: Models
+#import "Post.h"
+
+// MARK: Controllers
 #import "PhotosViewController.h"
 #import "HomeFeedViewController.h"
-#import "SceneDelegate.h"
-#import "Post.h"
+
 
 @interface PhotosViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *imagePostView;
@@ -48,9 +53,6 @@
 
     // Get the image captured by the UIImagePickerController
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    //UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-
-    // Do something with the images (based on your use case)
     self.imagePostView.image = [self resizeImage:originalImage withSize:CGSizeMake(300, 300)];
     
     // Dismiss UIImagePickerController to go back to your original view controller

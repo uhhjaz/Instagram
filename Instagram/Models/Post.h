@@ -7,6 +7,8 @@
 //
 
 #import <Parse/Parse.h>
+
+// MARK: Models
 #import "IGUser.h"
 
 

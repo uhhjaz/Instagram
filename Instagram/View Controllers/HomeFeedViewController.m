@@ -6,17 +6,24 @@
 //  Copyright © 2020 jazgill. All rights reserved.
 //
 
-#import "HomeFeedViewController.h"
-#import "AppDelegate.h"
-#import "LoginViewController.h"
-#import "PostDetailViewController.h"
-#import <Parse/Parse.h>
 #import "SceneDelegate.h"
-#import "PhotoCell.h"
+#import <Parse/Parse.h>
+
+// MARK: Models
 #import "Post.h"
 #import "IGUser.h"
 
-@interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource> 
+// MARK: Views
+#import "PhotoCell.h"
+
+// MARK: Controllers
+#import "HomeFeedViewController.h"
+#import "LoginViewController.h"
+#import "PostDetailViewController.h"
+#import "ProfileViewController.h"
+
+
+@interface HomeFeedViewController () <UITableViewDelegate, UITableViewDataSource, PhotoCellDelegate> 
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *feedPosts;
@@ -80,6 +87,9 @@
     }];
 }
 
+- (void)photoCell:(PhotoCell *) photoCell didTap: (IGUser *)user {
+    [self performSegueWithIdentifier:@"profileSegue" sender:user];
+}
 
 
 // shows how many rows we have
@@ -94,6 +104,7 @@
     // creates cell from photo
     PhotoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell"];
     cell.postIg = self.feedPosts[indexPath.row];
+    cell.delegate = self;
     [cell setPostValues];
     
     return cell;
@@ -104,13 +115,21 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UITableViewCell *tappedCell = sender;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-    Post *gramPost = self.feedPosts[indexPath.row];
+
+    if ([segue.identifier isEqualToString:@"detailSegue"]) {
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Post *gramPost = self.feedPosts[indexPath.row];
     
-    // sends movie array to next controller
-    PostDetailViewController *postDetailViewController = [segue destinationViewController];
-    postDetailViewController.postIg = gramPost;
+        // sends post info to next controller
+        PostDetailViewController *postDetailViewController = [segue destinationViewController];
+        postDetailViewController.postIg = gramPost;
+    }
+    else if([segue.identifier isEqualToString:@"profileSegue"]) {
+        IGUser *user = sender;
+        ProfileViewController *profileViewController = [segue destinationViewController];
+        profileViewController.theUser = user;
+    }
     
 }
 

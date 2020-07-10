@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+
+// MARK: Models
 #import "Post.h"
 #import "IGUser.h"
+
 
 @import Parse;
 

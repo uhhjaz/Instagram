@@ -6,21 +6,31 @@
 //  Copyright © 2020 jazgill. All rights reserved.
 //
 
-#import "PhotoCell.h"
 #import <Parse/Parse.h>
+
+// MARK: Models
+#import "PhotoCell.h"
+
 
 @implementation PhotoCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    UITapGestureRecognizer *profileTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapUserProfile:)];
+    [self.profilePictureView addGestureRecognizer:profileTapGestureRecognizer];
+    [self.profilePictureView setUserInteractionEnabled:YES];
 }
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
+
+
+- (void) didTapUserProfile:(UITapGestureRecognizer *)sender{
+    [self.delegate photoCell:self didTap:self.postIg.author];
+}
+
 
 - (void)setPostValues {
     

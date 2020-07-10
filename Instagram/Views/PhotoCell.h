@@ -7,13 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-@import Parse;
+
+// MARK: Models
 #import "Post.h"
 #import "IGUser.h"
 
+
 NS_ASSUME_NONNULL_BEGIN
 
+@import Parse;
+
+@protocol PhotoCellDelegate;
+
 @interface PhotoCell : UITableViewCell
+@property (nonatomic, weak) id<PhotoCellDelegate> delegate;
 @property (strong, nonatomic) Post *postIg;
 @property (weak, nonatomic) IBOutlet PFImageView *imagePostView;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
@@ -22,6 +29,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 - (void)setPostValues;
+
+@end
+
+@protocol PhotoCellDelegate
+
+- (void)photoCell:(PhotoCell *) photoCell didTap: (IGUser *)user;
 
 @end
 

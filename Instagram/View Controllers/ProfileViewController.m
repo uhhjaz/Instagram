@@ -6,23 +6,28 @@
 //  Copyright © 2020 jazgill. All rights reserved.
 //
 
-#import "ProfileViewController.h"
+#import "SceneDelegate.h"
+#import <Parse/Parse.h>
+
+// MARK: Models
+#import "Post.h"
+#import "IGUser.h"
+
+// MARK: Views
+#import "PhotoGridCell.h"
+
+// MARK: Controllers
 #import "HomeFeedViewController.h"
-#import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "PostDetailViewController.h"
-#import <Parse/Parse.h>
-#import "SceneDelegate.h"
-#import "PhotoCell.h"
-#import "Post.h"
-#import "PhotoGridCell.h"
-#import "IGUser.h"
+#import "ProfileViewController.h"
+
 
 @interface ProfileViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 
 @property (weak, nonatomic) IBOutlet PFImageView *profileImageView;
-@property (strong, nonatomic) NSArray *myFeedPosts;
+@property (strong, nonatomic) NSArray *userPosts;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -36,7 +41,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.collectionView reloadData];
-    [self getMyFeed];
+    [self getFeed];
 }
 
 
@@ -46,8 +51,7 @@
     self.collectionView.delegate = self;
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height / 2;
    
-    [self getMyFeed];
-    
+    [self getFeed];
     
     self.flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     self.flowLayout.minimumLineSpacing = 0;
@@ -65,34 +69,37 @@
 }
 
 
-- (void) getMyProfile {
-    IGUser *theUser = [IGUser currentUser];
-    self.usernameLabel.text = theUser.username;
-    self.postCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.myFeedPosts.count];
-    self.nameLabel.text = theUser.name;
-    self.profileImageView.file = theUser.profileImageView;
-    [self.profileImageView  loadInBackground];
-
+- (void) getProfile {
+    self.usernameLabel.text = self.theUser.username;
+    self.postCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.userPosts.count];
+    self.nameLabel.text = self.theUser.name;
+    self.profileImageView.file = self.theUser.profileImageView;
+    [self.profileImageView loadInBackground];
 }
 
 
-- (void) getMyFeed{
+- (void) getFeed{
+    
+    //check if fetching your own profile
+    if (self.theUser == nil) {
+        self.theUser = [IGUser currentUser];
+    }
     
     //PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"author"];
-    [query whereKey:@"author" equalTo:[IGUser currentUser]];
+    [query whereKey:@"author" equalTo:self.theUser];
     //[query ]
 
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *posts, NSError *error) {
         if (posts != nil) {
             NSLog(@"Successfully got posts");
-            self.myFeedPosts = posts;
+            self.userPosts = posts;
             
-            NSLog(@"My posts are: %@",self.myFeedPosts);
-            [self getMyProfile];
+            NSLog(@"My posts are: %@",self.userPosts);
+            [self getProfile];
             [self.collectionView reloadData];
             
         } else {
@@ -105,7 +112,7 @@
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PhotoGridCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoGridCell" forIndexPath:indexPath];
-    cell.postIg = self.myFeedPosts[indexPath.item];
+    cell.postIg = self.userPosts[indexPath.item];
 
     [cell setPostImage];
     return cell;
@@ -113,7 +120,7 @@
 
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.myFeedPosts.count;
+    return self.userPosts.count;
 }
 
 
@@ -129,25 +136,22 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 
-    // Get the image captured by the UIImagePickerController
     UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    //UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-
-    // Do something with the images (based on your use case)
     UIImage *resizedImage = [self resizeImage:originalImage withSize:CGSizeMake(200, 100)];
     
-    // Dismiss UIImagePickerController to go back to your original view controller
+    // Dismiss UIImagePickerController to go back original view controller
     [self dismissViewControllerAnimated:YES completion:^{
         [IGUser updateUserProfileImage:resizedImage withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if(succeeded){
                 NSLog(@"updating profile image successful");
-                [self getMyProfile];
+                [self getProfile];
             } else{
                 NSLog(@"Error posting image: %@", error.localizedDescription);
             }
         }];
     }];
 }
+
 
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
     UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
@@ -163,14 +167,17 @@
     return newImage;
 }
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+UICollectionViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
+    Post *post = self.userPosts[indexPath.row];
+
+    PostDetailViewController *postDetailViewController = [segue destinationViewController];
+    postDetailViewController.postIg = post;
 }
-*/
+
 
 @end

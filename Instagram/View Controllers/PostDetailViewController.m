@@ -6,9 +6,14 @@
 //  Copyright © 2020 jazgill. All rights reserved.
 //
 
-#import "PostDetailViewController.h"
-#import "IGUser.h"
 #import <Parse/Parse.h>
+
+// MARK: Models
+#import "IGUser.h"
+
+// MARK: Controllers
+#import "PostDetailViewController.h"
+
 
 @interface PostDetailViewController ()
 @property (weak, nonatomic) IBOutlet PFImageView *postImageView;
@@ -48,7 +53,6 @@
     
     self.postImageView.file = self.postIg[@"image"];
     [self.postImageView loadInBackground];
-    //self.imagePostView.layer.cornerRadius = self.imagePostView.frame.size.height / 2;
     
 }
 

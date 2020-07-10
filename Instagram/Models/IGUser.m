@@ -6,6 +6,7 @@
 //  Copyright © 2020 jazgill. All rights reserved.
 //
 
+// MARK: Models
 #import "IGUser.h"
 
 @implementation IGUser

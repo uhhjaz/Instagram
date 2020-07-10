@@ -6,6 +6,7 @@
 //  Copyright © 2020 jazgill. All rights reserved.
 //
 
+// MARK: Models
 #import "Post.h"
 
 @implementation Post
