@@ -18,7 +18,8 @@
 #import "PhotoGridCell.h"
 #import "IGUser.h"
 
-@interface ProfileViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface ProfileViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
 
 @property (weak, nonatomic) IBOutlet PFImageView *profileImageView;
 @property (strong, nonatomic) NSArray *myFeedPosts;
@@ -59,21 +60,19 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     int totalwidth = self.collectionView.bounds.size.width;
     int numberOfCellsPerRow = 3;
-    int oddEven = indexPath.row / numberOfCellsPerRow % 2;
     int dimensions = (CGFloat)(totalwidth / numberOfCellsPerRow);
-    if (oddEven == 0) {
-        return CGSizeMake(dimensions, dimensions);
-    } else {
-        return CGSizeMake(dimensions, dimensions / 2);
-    }
+    return CGSizeMake(dimensions, dimensions);
 }
 
 
--(void) getProfile {
+- (void) getMyProfile {
     IGUser *theUser = [IGUser currentUser];
     self.usernameLabel.text = theUser.username;
     self.postCountLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.myFeedPosts.count];
     self.nameLabel.text = theUser.name;
+    self.profileImageView.file = theUser.profileImageView;
+    [self.profileImageView  loadInBackground];
+
 }
 
 
@@ -93,7 +92,7 @@
             self.myFeedPosts = posts;
             
             NSLog(@"My posts are: %@",self.myFeedPosts);
-            [self getProfile];
+            [self getMyProfile];
             [self.collectionView reloadData];
             
         } else {
@@ -117,6 +116,52 @@
     return self.myFeedPosts.count;
 }
 
+
+- (IBAction)didTapProfileImage:(id)sender {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+
+    // Get the image captured by the UIImagePickerController
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    //UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+
+    // Do something with the images (based on your use case)
+    UIImage *resizedImage = [self resizeImage:originalImage withSize:CGSizeMake(200, 100)];
+    
+    // Dismiss UIImagePickerController to go back to your original view controller
+    [self dismissViewControllerAnimated:YES completion:^{
+        [IGUser updateUserProfileImage:resizedImage withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if(succeeded){
+                NSLog(@"updating profile image successful");
+                [self getMyProfile];
+            } else{
+                NSLog(@"Error posting image: %@", error.localizedDescription);
+            }
+        }];
+    }];
+}
+
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
+}
 
 /*
 #pragma mark - Navigation

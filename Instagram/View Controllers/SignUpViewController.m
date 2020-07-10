@@ -51,6 +51,7 @@
     newUser.password = self.passwordField.text;
     //newUser
     newUser.name = self.nameField.text;
+
     
     // call sign up function on the object
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
@@ -101,6 +102,10 @@
             
         } else {
             NSLog(@"User registered successfully");
+            
+            [IGUser updateUserProfileImage:[UIImage imageNamed: @"profile_image_default.png"] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            }];
+            
             //[self performSegueWithIdentifier:@"signupSegue" sender:nil];
             
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

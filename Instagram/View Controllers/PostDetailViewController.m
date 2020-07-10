@@ -8,6 +8,7 @@
 
 #import "PostDetailViewController.h"
 #import "IGUser.h"
+#import <Parse/Parse.h>
 
 @interface PostDetailViewController ()
 @property (weak, nonatomic) IBOutlet PFImageView *postImageView;
@@ -16,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UILabel *likeCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet PFImageView *profileImageView;
 
 
 @end
@@ -39,6 +41,11 @@
     [dateFormat setDateFormat:@"MMMM dd YYYY"];
     NSString* dateInWords = [dateFormat stringFromDate:date];
     self.dateLabel.text = dateInWords;
+    
+    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height / 2;
+    self.profileImageView.file = user.profileImageView;
+    [self.profileImageView loadInBackground];
+    
     self.postImageView.file = self.postIg[@"image"];
     [self.postImageView loadInBackground];
     //self.imagePostView.layer.cornerRadius = self.imagePostView.frame.size.height / 2;

@@ -7,14 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ProfileViewController.h"
-#import "HomeFeedViewController.h"
-#import "AppDelegate.h"
-#import "LoginViewController.h"
-#import "PostDetailViewController.h"
 #import <Parse/Parse.h>
-#import "SceneDelegate.h"
-#import "PhotoCell.h"
 #import "Post.h"
 #import "IGUser.h"
 

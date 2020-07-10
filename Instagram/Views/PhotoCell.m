@@ -24,11 +24,12 @@
 
 - (void)setPostValues {
     
-    //self.profileView.defaultPictureViewBg.layer.cornerRadius = self.profileView.defaultPictureViewBg.frame.size.height / 2;
     self.captionLabel.text = self.postIg[@"caption"];
     self.imagePostView.file = self.postIg[@"image"];
-    //self.imagePostView.layer.cornerRadius = self.imagePostView.frame.size.height / 2;
     IGUser *user = self.postIg[@"author"];
+    self.profilePictureView.layer.cornerRadius = self.profilePictureView.frame.size.height / 2;
+    self.profilePictureView.file = user.profileImageView;
+    [self.profilePictureView loadInBackground];
     self.usernameLabel.text = user.username;
     [self.imagePostView loadInBackground];
     

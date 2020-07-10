@@ -9,13 +9,18 @@
 #import <Parse/Parse.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@import Parse;
 
 @interface IGUser : PFUser
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) PFFileObject *profileImageView;
+
 
 + (IGUser *)user;
 + (BOOL)isLoggedIn;
++ (void) updateUserProfileImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image;
 
 @end
 
