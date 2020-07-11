@@ -14,12 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol PhotosViewControllerDelegate
 
+// MARK: Methods
 - (void)didPost:(Post *)post;
 
 @end
 
 @interface PhotosViewController : UIViewController
 
+// MARK: Properties
 @property (nonatomic, weak) id<PhotosViewControllerDelegate> delegate;
 
 @end

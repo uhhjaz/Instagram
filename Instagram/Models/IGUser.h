@@ -13,10 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IGUser : PFUser
 
+// MARK: Properties
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) PFFileObject *profileImageView;
 
-
+// MARK: Methods
 + (IGUser *)user;
 + (BOOL)isLoggedIn;
 + (void) updateUserProfileImage: ( UIImage * _Nullable )image withCompletion: (PFBooleanResultBlock  _Nullable)completion;

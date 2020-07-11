@@ -15,12 +15,15 @@
 
 
 @import Parse;
-
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PhotoGridCell : UICollectionViewCell
+
+// MARK: Properties
 @property (strong, nonatomic) Post *postIg;
 @property (weak, nonatomic) IBOutlet PFImageView *postImageView;
+
+// MARK: Methods
 - (void)setPostImage;
 
 @end

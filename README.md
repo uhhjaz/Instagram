@@ -2,7 +2,7 @@
 
 **Instagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **7** hours spent in total
+Time spent: **20** hours spent in total
 
 ## User Stories
 
@@ -20,27 +20,31 @@ The following **optional** features are implemented:
 
 - [x] Run your app on your phone and use the camera to take the photo
 - [x] Style the login page to look like the real Instagram login page.
-- [ ] Style the feed to look like the real Instagram feed.
-- [ ] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user. AKA, tabs for Home Feed and Profile
+- [x] Style the feed to look like the real Instagram feed.
+- [x] User can use a tab bar to switch between all "Instagram" posts and posts published only by the user. AKA, tabs for Home Feed and Profile
 - [ ] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
 - [x] Show the username and creation time for each post
-- [ ] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
+- [x] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
 - User Profiles:
-  - [ ] Allow the logged in user to add a profile photo
-  - [ ] Display the profile photo with each post
-  - [ ] Tapping on a post's username or profile photo goes to that user's profile page
+  - [x] Allow the logged in user to add a profile photo
+  - [x] Display the profile photo with each post
+  - [x] Tapping on a post's username or profile photo goes to that user's profile page
 - [ ] User can comment on a post and see all comments for each post in the post details screen.
 - [ ] User can like a post and see number of likes for each post in the post details screen.
 - [ ] Implement a custom camera view.
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] User can see number of posts + name on profile page
+- [x] User can update their profile picture
+- [x] User can tap a post from profile to view detail
+- [x] Implemented signup view to look like real instagram
+- [x] Styled profile page to look like real instagram
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. Implementing the "skip over posts" to implement infinite scrolling. I had trouble implementing it correctly and understanding the logic behind it. 
+2. My gridview autolayout on the profile page would act different on a simulator and versus when I ran it on my own device and would not correctly work overall. 
 
 ## Video Walkthrough
 
@@ -59,7 +63,9 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Gridview autolayout
+Infinite loading
+Updating the database with a new likecount
 
 ## License
 

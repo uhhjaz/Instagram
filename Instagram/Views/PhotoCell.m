@@ -10,6 +10,7 @@
 
 // MARK: Models
 #import "PhotoCell.h"
+#import "DateTools.h"
 
 
 @implementation PhotoCell
@@ -34,14 +35,20 @@
 
 - (void)setPostValues {
     
-    self.captionLabel.text = self.postIg[@"caption"];
-    self.imagePostView.file = self.postIg[@"image"];
     IGUser *user = self.postIg[@"author"];
+    self.captionLabel.text = self.postIg[@"caption"];
+    self.usernameLabel.text = user.username;
     self.profilePictureView.layer.cornerRadius = self.profilePictureView.frame.size.height / 2;
     self.profilePictureView.file = user.profileImageView;
     [self.profilePictureView loadInBackground];
-    self.usernameLabel.text = user.username;
+    self.imagePostView.file = self.postIg[@"image"];
     [self.imagePostView loadInBackground];
+    
+    // Convert Date to String
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *date = [dateFormat dateFromString:self.postIg[@"postedDate"]];
+    self.timeLabel.text = [date shortTimeAgoSinceNow];
     
 }
 

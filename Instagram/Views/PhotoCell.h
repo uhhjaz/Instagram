@@ -16,24 +16,27 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @import Parse;
-
 @protocol PhotoCellDelegate;
 
 @interface PhotoCell : UITableViewCell
+
+// MARK: Properties
 @property (nonatomic, weak) id<PhotoCellDelegate> delegate;
 @property (strong, nonatomic) Post *postIg;
 @property (weak, nonatomic) IBOutlet PFImageView *imagePostView;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *profilePictureView;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
-
+// MARK: Methods
 - (void)setPostValues;
 
 @end
 
 @protocol PhotoCellDelegate
 
+// MARK: Methods
 - (void)photoCell:(PhotoCell *) photoCell didTap: (IGUser *)user;
 
 @end

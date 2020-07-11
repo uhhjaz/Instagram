@@ -7,6 +7,7 @@
 //
 
 #import "SceneDelegate.h"
+#import "MBProgressHUD.h"
 
 // MARK: Models
 #import "Post.h"
@@ -61,18 +62,21 @@
 
 
 - (IBAction)didTapPost:(id)sender {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Post postUserImage:self.imagePostView.image withCaption:[self.captionField text] withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
         if(succeeded){
             NSLog(@"posting image success");
             self.imagePostView.image = [UIImage imageNamed: @"image_placeholder.png"];
             self.captionField.text = @"";
+            [self.tabBarController setSelectedIndex:0];
         }
         else{
             NSLog(@"Error posting image: %@", error.localizedDescription);
         }
     }];
     
-    [self.tabBarController setSelectedIndex:0];
     
 }
 

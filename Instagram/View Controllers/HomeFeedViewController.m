@@ -27,7 +27,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *feedPosts;
-@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 
 @end
@@ -35,7 +34,7 @@
 @implementation HomeFeedViewController
 
 - (void)viewWillAppear:(BOOL)animated{
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
     [self getFeed];
 }
 
@@ -46,9 +45,9 @@
     
     [self getFeed];
     
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(getFeed) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:refreshControl atIndex:0];
 
 }
 
@@ -83,7 +82,7 @@
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
-        [self.refreshControl endRefreshing];
+
     }];
 }
 
@@ -97,6 +96,10 @@
     return self.feedPosts.count;
 }
 
+- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+    [self getFeed];
+    [refreshControl endRefreshing];
+}
 
 // creates and configures a cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

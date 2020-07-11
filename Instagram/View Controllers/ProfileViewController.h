@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ProfileViewController : UIViewController
 
+// MARK: Properties
 @property (strong, nonatomic) IGUser *theUser;
 
 @end
