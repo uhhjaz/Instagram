@@ -33,7 +33,7 @@
                                     <constraint firstAttribute="height" constant="34" id="6LH-Fs-lhf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="iglogo" translatesAutoresizingMaskIntoConstraints="NO" id="rgL-uM-3EG">
                                 <rect key="frame" x="104" y="284.5" width="206" height="89"/>
@@ -140,7 +140,7 @@
                                     <constraint firstAttribute="height" constant="34" id="Ohz-pl-CmN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="igsu" translatesAutoresizingMaskIntoConstraints="NO" id="LAp-4K-Tpm">
                                 <rect key="frame" x="-49" y="284.5" width="512" height="88"/>

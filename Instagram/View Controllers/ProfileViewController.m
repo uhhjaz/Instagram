@@ -125,12 +125,17 @@
 
 
 - (IBAction)didTapProfileImage:(id)sender {
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
-    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    if (self.theUser == [IGUser currentUser]) {
+        UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+        imagePickerVC.delegate = self;
+        imagePickerVC.allowsEditing = YES;
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
-    [self presentViewController:imagePickerVC animated:YES completion:nil];
+        [self presentViewController:imagePickerVC animated:YES completion:nil];
+    }
+    else {
+        NSLog(@"not current user's profile page");
+    }
 }
 
 
